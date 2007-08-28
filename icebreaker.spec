@@ -45,7 +45,6 @@ install -m 0644 %{name}-48.png -D $RPM_BUILD_ROOT%{_iconsdir}/hicolor/48x48/apps
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Encoding=UTF-8
 Name=IceBreaker
 Comment="Action-puzzle game involving bouncing penguins"
 Exec=%{_gamesbindir}/%{name}
