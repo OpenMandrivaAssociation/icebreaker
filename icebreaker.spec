@@ -1,7 +1,7 @@
 Summary:	An addictive action-puzzle game involving bouncing penguins
 Name:		icebreaker
 Version:	1.9.7
-Release:	%mkrel 11
+Release:	%mkrel 12
 Epoch:		1
 License:	GPL
 Group:		Games/Arcade
@@ -46,7 +46,7 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=IceBreaker
-Comment="Action-puzzle game involving bouncing penguins"
+Comment=Action-puzzle game involving bouncing penguins
 Exec=%{_gamesbindir}/%{name}
 Icon=%{name}
 Terminal=false
