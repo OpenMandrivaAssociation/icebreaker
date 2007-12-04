@@ -11,7 +11,7 @@ Source2: 	%{name}-png.tar.bz2
 
 URL:		http://www.mattdm.org/icebreaker/
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	XFree86-devel SDL_mixer-devel alsa-lib-devel esound-devel gcc
+BuildRequires:	X11-devel SDL_mixer-devel alsa-lib-devel esound-devel gcc
 
 %description
 IceBreaker is an action-puzzle game in which you must capture penguins
