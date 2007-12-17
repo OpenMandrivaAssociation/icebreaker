@@ -10,7 +10,6 @@ Source: 	http://www.mattdm.org/icebreaker/1.9.x/%{name}-%{version}.tgz
 Source2: 	%{name}-png.tar.bz2
 
 URL:		http://www.mattdm.org/icebreaker/
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	X11-devel SDL_mixer-devel alsa-lib-devel esound-devel gcc
 
 %description
