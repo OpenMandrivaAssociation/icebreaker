@@ -1,7 +1,7 @@
 Summary:	An addictive action-puzzle game involving bouncing penguins
 Name:		icebreaker
 Version:	1.9.7
-Release:	%mkrel 12
+Release:	%mkrel 13
 Epoch:		1
 License:	GPL
 Group:		Games/Arcade
