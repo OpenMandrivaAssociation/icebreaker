@@ -25,15 +25,15 @@ isn't an exact clone of) Jezzball by Dima Pavlovsky.
 %setup -q -a2
 
 %build
-%make OPTIMIZE="$RPM_OPT_FLAGS" prefix=%{_prefix} highscoredir=%{_localstatedir}/games datadir=%{_gamesdatadir}
+%make OPTIMIZE="$RPM_OPT_FLAGS" prefix=%{_prefix} highscoredir=%{_localstatedir}/lib/games datadir=%{_gamesdatadir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{_gamesdatadir}/%{name}
-mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/games
+mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/lib/games
 install -m 644 *.wav *.bmp $RPM_BUILD_ROOT%{_gamesdatadir}/%{name}
 install -m 755 icebreaker -D $RPM_BUILD_ROOT%{_gamesbindir}/%{name}
-touch $RPM_BUILD_ROOT%{_localstatedir}/games/%{name}.scores
+touch $RPM_BUILD_ROOT%{_localstatedir}/lib/games/%{name}.scores
 
 install -m 0644 %{name}-16.png -D $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
 install -m 0644 %{name}-16.png -D $RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/%{name}.png
@@ -60,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %{update_menus}
 %update_icon_cache hicolor
-%create_ghostfile %{_localstatedir}/games/%{name}.scores games games 644
+%create_ghostfile %{_localstatedir}/lib/games/%{name}.scores games games 644
 
 %postun
 %{clean_menus}
@@ -71,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README TODO LICENSE ChangeLog
 %attr(2755,root,games) %{_gamesbindir}/%{name}
 %{_gamesdatadir}/%{name}
-%attr(664,games,games) %ghost %{_localstatedir}/games/%{name}.scores
+%attr(664,games,games) %ghost %{_localstatedir}/lib/games/%{name}.scores
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
