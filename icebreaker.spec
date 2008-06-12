@@ -58,13 +58,17 @@ EOF
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%if %mdkversion < 200900
 %{update_menus}
 %update_icon_cache hicolor
+%endif
 %create_ghostfile %{_localstatedir}/lib/games/%{name}.scores games games 644
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
 %clean_icon_cache hicolor
+%endif
 
 %files
 %defattr (-,root,root)
