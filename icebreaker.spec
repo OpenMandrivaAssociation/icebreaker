@@ -8,6 +8,7 @@ Group:		Games/Arcade
 
 Source: 	http://www.mattdm.org/icebreaker/1.9.x/%{name}-%{version}.tgz
 Source2: 	%{name}-png.tar.bz2
+Patch0:		icebreaker-1.9.7-fix-str-fmt.patch
 
 URL:		http://www.mattdm.org/icebreaker/
 BuildRoot:	%{_tmppath}/%{name}-buildroot
@@ -23,9 +24,10 @@ isn't an exact clone of) Jezzball by Dima Pavlovsky.
 
 %prep
 %setup -q -a2
+%patch0 -p0
 
 %build
-%make OPTIMIZE="$RPM_OPT_FLAGS" prefix=%{_prefix} highscoredir=%{_localstatedir}/lib/games datadir=%{_gamesdatadir}
+%make OPTIMIZE="%{optflags}" prefix=%{_prefix} highscoredir=%{_localstatedir}/lib/games datadir=%{_gamesdatadir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
