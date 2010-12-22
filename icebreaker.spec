@@ -12,7 +12,8 @@ Patch0:		icebreaker-1.9.7-fix-str-fmt.patch
 
 URL:		http://www.mattdm.org/icebreaker/
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	X11-devel SDL_mixer-devel alsa-lib-devel esound-devel gcc
+BuildRequires:	SDL-devel
+BuildRequires:	SDL_mixer-devel
 
 %description
 IceBreaker is an action-puzzle game in which you must capture penguins
@@ -27,7 +28,7 @@ isn't an exact clone of) Jezzball by Dima Pavlovsky.
 %patch0 -p0
 
 %build
-%make OPTIMIZE="%{optflags}" prefix=%{_prefix} highscoredir=%{_localstatedir}/lib/games datadir=%{_gamesdatadir}
+%make OPTIMIZE="%{optflags} %{ldflags}" prefix=%{_prefix} highscoredir=%{_localstatedir}/lib/games datadir=%{_gamesdatadir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
