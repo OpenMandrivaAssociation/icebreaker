@@ -31,22 +31,22 @@ isn't an exact clone of) Jezzball by Dima Pavlovsky.
 %make OPTIMIZE="%{optflags} %{ldflags}" prefix=%{_prefix} highscoredir=%{_localstatedir}/lib/games datadir=%{_gamesdatadir}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_gamesdatadir}/%{name}
-mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/lib/games
-install -m 644 *.wav *.bmp $RPM_BUILD_ROOT%{_gamesdatadir}/%{name}
-install -m 755 icebreaker -D $RPM_BUILD_ROOT%{_gamesbindir}/%{name}
-touch $RPM_BUILD_ROOT%{_localstatedir}/lib/games/%{name}.scores
+rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_gamesdatadir}/%{name}
+mkdir -p %{buildroot}%{_localstatedir}/lib/games
+install -m 644 *.wav *.bmp %{buildroot}%{_gamesdatadir}/%{name}
+install -m 755 icebreaker -D %{buildroot}%{_gamesbindir}/%{name}
+touch %{buildroot}%{_localstatedir}/lib/games/%{name}.scores
 
-install -m 0644 %{name}-16.png -D $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
-install -m 0644 %{name}-16.png -D $RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/%{name}.png
-install -m 0644 %{name}-32.png -D $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
-install -m 0644 %{name}-32.png -D $RPM_BUILD_ROOT%{_iconsdir}/hicolor/32x32/apps/%{name}.png
-install -m 0644 %{name}-48.png -D $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
-install -m 0644 %{name}-48.png -D $RPM_BUILD_ROOT%{_iconsdir}/hicolor/48x48/apps/%{name}.png
+install -m 0644 %{name}-16.png -D %{buildroot}%{_miconsdir}/%{name}.png
+install -m 0644 %{name}-16.png -D %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
+install -m 0644 %{name}-32.png -D %{buildroot}%{_iconsdir}/%{name}.png
+install -m 0644 %{name}-32.png -D %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
+install -m 0644 %{name}-48.png -D %{buildroot}%{_liconsdir}/%{name}.png
+install -m 0644 %{name}-48.png -D %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=IceBreaker
 Comment=Action-puzzle game involving bouncing penguins
@@ -58,7 +58,7 @@ Categories=Game;ArcadeGame;
 EOF
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %if %mdkversion < 200900
