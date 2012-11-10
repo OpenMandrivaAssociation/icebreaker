@@ -1,0 +1,78 @@
+--- hiscore.c.str	2009-04-09 16:05:03.000000000 +0200
++++ hiscore.c	2009-04-09 16:07:17.000000000 +0200
+@@ -103,7 +103,7 @@
+ 	// ok, so now, we can copy things over in the proper sorted order
+ 	for (i=0;i<HISCORENUM;i++)
+ 	{
+-		snprintf(hiscorename[i],50,temphiscorename[arrayindex[i]]);
++		snprintf(hiscorename[i],50,"%s",temphiscorename[arrayindex[i]]);
+ 		hiscoreval[i]=temphiscoreval[arrayindex[i]];
+ 	}
+ 
+@@ -201,13 +201,13 @@
+ 	// make sure the temp array contains the right data
+ 	for (i=0;i<HISCORENUM;i++)
+ 	{
+-		snprintf(temphiscorename[i],50,hiname[i]);
++		snprintf(temphiscorename[i],50,"%s",hiname[i]);
+ 		temphiscoreval[i]=hival[i];
+ 	}
+ 	
+ 	// and toss in the new data 
+ 	//(this is why these arrays are size HISCORENUM+1)
+-	snprintf(temphiscorename[HISCORENUM],50,username);
++	snprintf(temphiscorename[HISCORENUM],50,"%s",username);
+ 	temphiscoreval[HISCORENUM]=score;
+ 
+ 	// fill the "helper" array. 
+@@ -221,7 +221,7 @@
+ 	// and take the top ones back.
+ 	for (i=0;i<HISCORENUM;i++)
+ 	{
+-		snprintf(hiname[i],50,temphiscorename[arrayindex[i]]); 
++		snprintf(hiname[i],50,"%s",temphiscorename[arrayindex[i]]); 
+ 		hival[i]=temphiscoreval[arrayindex[i]];
+ 	}
+ }
+--- icebreaker.c.str	2009-04-09 16:04:14.000000000 +0200
++++ icebreaker.c	2009-04-09 16:04:42.000000000 +0200
+@@ -79,8 +79,8 @@
+ 	setvbuf(stdout,(char *)NULL, _IOLBF, 0);
+ 	
+ 	userinfo = getpwuid(getuid()); // FIX -- make this part of the options struct; and maybe save in options file
+-	snprintf(username,50,userinfo->pw_name); // not like it's gonna be fifty characters. but y'know. note: gets chopped to fit in gethighusername().
+-	snprintf(homedir,255,userinfo->pw_dir); // fix - use OS define for length
++	snprintf(username,50,"%s",userinfo->pw_name); // not like it's gonna be fifty characters. but y'know. note: gets chopped to fit in gethighusername().
++	snprintf(homedir,255,"%s",userinfo->pw_dir); // fix - use OS define for length
+ 
+ 	inithiscores();
+ 	newuser=readoptions();		
+--- menu.c.str	2009-04-09 16:07:30.000000000 +0200
++++ menu.c	2009-04-09 16:07:55.000000000 +0200
+@@ -538,13 +538,13 @@
+ 			if (mbutton==1 || mbutton==4) // left click or scroll forwards
+ 			{
+ 				strncpy(val,themelist[(t+1)%themecount],MAXMENUVALUELENGTH);
+-				snprintf(options.theme,MAXMENUVALUELENGTH,themelist[(t+1)%themecount]);
++				snprintf(options.theme,MAXMENUVALUELENGTH,"%s",themelist[(t+1)%themecount]);
+ 			}
+ 			else // right or middle or scroll back
+ 			{
+ 				if (t<0) t=themecount;
+ 				strncpy(val,themelist[(t-1)%themecount],MAXMENUVALUELENGTH);
+-				snprintf(options.theme,MAXMENUVALUELENGTH,themelist[(t-1)%themecount]);
++				snprintf(options.theme,MAXMENUVALUELENGTH,"%s",themelist[(t-1)%themecount]);
+ 			}
+ 			
+ 			settheme(options.theme);
+--- themes.c.str	2009-04-09 16:08:08.000000000 +0200
++++ themes.c	2009-04-09 16:08:20.000000000 +0200
+@@ -487,7 +487,7 @@
+ 	}
+ 	else
+ 	{
+-		snprintf(themename,MAXTHEMENAMELENGTH+1,themelist[random() %themecount]);
++		snprintf(themename,MAXTHEMENAMELENGTH+1,"%s",themelist[random() %themecount]);
+ 	}
+ 	freethemenames(&themelist,themecount);
+ 	return settheme(themename);
