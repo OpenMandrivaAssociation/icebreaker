@@ -2,7 +2,7 @@ Summary:	An addictive action-puzzle game involving bouncing penguins
 Name:		icebreaker
 Epoch:		1
 Version:	1.9.7
-Release:	26
+Release:	27
 License:	GPLv2
 Group:		Games/Arcade
 Url:		http://www.mattdm.org/icebreaker/
