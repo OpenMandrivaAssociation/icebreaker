@@ -5,7 +5,7 @@ Version:	1.9.8
 Release:	30
 License:	GPLv2
 Group:		Games/Arcade
-Url:		http://www.mattdm.org/icebreaker/
+Url:		https://www.mattdm.org/icebreaker/
 Source0:	http://www.mattdm.org/icebreaker/1.9.x/%{name}-%{version}.tgz
 Source2:	%{name}-png.tar.bz2
 Patch0:		icebreaker-1.9.7-fix-str-fmt.patch
